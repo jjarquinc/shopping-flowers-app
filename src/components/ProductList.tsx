@@ -1,17 +1,52 @@
 'use client'
 
-import { productService } from '../services/productService'
-import { Product } from '../types/types'
+import { useContext } from 'react'
 import cardItemStyle from '../styles/cardItem.module.css'
 
+import { CardItem } from './CardItem'
+import { CarShop } from './CarShop'
+import { orderDetailContext } from '../contexts/OrderDetailContext'
+import { filterProductContext } from '../contexts/FilterProductsContext'
+import { OrderDetail, Product } from '../types/types'
+
 export const ProductList = () => {
-    const products = productService.getProductList()
+    const { products } = useContext(filterProductContext)
+    const { orderDetails, setOrderDetails } = useContext(orderDetailContext)
+
+    const checkProductAddedToCarShop = (productId: number) => {
+        return orderDetails.some((p: Product) => p.id == productId)
+    }
+
+    const addItemCarShop = (product: Product) => {
+        setOrderDetails((prevOrderDetails: OrderDetail[]) => [
+            { ...product, quantity: 1 },
+            ...prevOrderDetails,
+        ])
+    }
+
+    const removeItemCarShop = (productId: number) => {
+        const orderDetailRemove = orderDetails.filter(
+            (p: Product) => p.id != productId
+        )
+        setOrderDetails(() => orderDetailRemove)
+    }
 
     return (
         <>
+            <CarShop orderDetails={orderDetails}></CarShop>
             <ul className={cardItemStyle.card_item_list}>
                 {products.map((product: Product) => {
-                    return <h5 key={product.id}>{product.title}</h5>
+                    return (
+                        <CardItem
+                            key={product.id}
+                            product={product}
+                            addItemCarShop={addItemCarShop}
+                            removeItemCarShop={removeItemCarShop}
+                            checkProductAddedToCarShop={
+                                checkProductAddedToCarShop
+                            }
+                        ></CardItem>
+                    )
                 })}
             </ul>
 
