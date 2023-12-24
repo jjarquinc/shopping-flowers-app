@@ -1,0 +1,68 @@
+{
+    "products": [
+        {
+            "title": "Amazing Grace",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "64.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/Roses_9_square.jpg"
+        },
+        {
+            "title": "Barcelona Orchid Duo",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "99.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/Gardenia-DT0107Gsquare.jpg"
+        },
+        {
+            "title": "Blue Orchid",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "79.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/DoubleHoneyBlush_square.jpg"
+        },
+        {
+            "title": "Celebration",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "54.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/Roses_9_square.jpg"
+        },
+        {
+            "title": "Eternity Red",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "149.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/DoubleHoneyBlush_square.jpg"
+        },
+        {
+            "title": "Gardenia",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "79.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/Gardenia-DT0107Gsquare.jpg"
+        },
+        {
+            "title": "Honey Blush Premium",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "64.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/DoubleHoneyBlush_square.jpg"
+        },
+        {
+            "title": "Pastel Garden",
+            "price": {
+                "currencyCode": "USD",
+                "amount": "54.99"
+            },
+            "imageUrl": "https://cdn.shopify.com/s/files/1/0084/0617/1763/products/Roses_9_square.jpg"
+        }
+    ]
+}
