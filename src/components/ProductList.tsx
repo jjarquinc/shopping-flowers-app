@@ -1,16 +1,24 @@
 'use client'
 
 import { useContext } from 'react'
+
+import { productService } from '../services/productService'
 import cardItemStyle from '../styles/cardItem.module.css'
 
 import { CardItem } from './CardItem'
 import { CarShop } from './CarShop'
+import { FiltersProduct } from './FiltersProduct'
+
 import { orderDetailContext } from '../contexts/OrderDetailContext'
 import { filterProductContext } from '../contexts/FilterProductsContext'
 import { OrderDetail, Product } from '../types/types'
 
 export const ProductList = () => {
-    const { products } = useContext(filterProductContext)
+    const productList = productService.getProductList()
+    const maxAmountProduct = productService.getMaxAmountProduct(productList)
+
+    const { products, setProducts, amountFilter, setAmountFilter } =
+        useContext(filterProductContext)
     const { orderDetails, setOrderDetails } = useContext(orderDetailContext)
 
     const checkProductAddedToCarShop = (productId: number) => {
@@ -31,9 +39,26 @@ export const ProductList = () => {
         setOrderDetails(() => orderDetailRemove)
     }
 
+    const handlerChangeAmountFilter = (
+        e: React.KeyboardEvent<HTMLInputElement> & { target: HTMLInputElement }
+    ) => {
+        const amountFilterValue = parseFloat(e.target.value)
+        const newProductFilter = productList.filter(
+            (p: Product) => p.price.amount <= amountFilterValue
+        )
+
+        setAmountFilter(() => amountFilterValue)
+        setProducts(() => newProductFilter)
+    }
+
     return (
         <>
             <CarShop orderDetails={orderDetails}></CarShop>
+            <FiltersProduct
+                amountFilter={amountFilter}
+                maxAmountProduct={maxAmountProduct}
+                handlerChangeAmountFilter={handlerChangeAmountFilter}
+            ></FiltersProduct>
             <ul className={cardItemStyle.card_item_list}>
                 {products.map((product: Product) => {
                     return (
